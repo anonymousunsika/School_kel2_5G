@@ -14,7 +14,7 @@ class User_model extends CI_Model
         ON `user`.`id` = `classroom_users`.`user_id`
         LEFT JOIN `classroom`
         ON `classroom_users`.`classroom_id` = `classroom`.`id`
-        WHERE `user`.`email` = " . $email;
+        WHERE `user`.`email` = '$email'";
 
         return $this->db->query($query)->row_array();
     }
@@ -27,7 +27,7 @@ class User_model extends CI_Model
         FROM `classroom_users` 
         LEFT JOIN `classroom` ON `classroom`.`id` = `classroom_users`.`classroom_id`
         LEFT JOIN `prodi` ON `prodi`.`id` = `classroom`.`prodi_id`
-        WHERE `classroom_users`.`user_id` = " . $userId;
+        WHERE `classroom_users`.`user_id` = '$userId'";
         return $this->db->query($query)->result_array();
     }
 
@@ -39,7 +39,7 @@ class User_model extends CI_Model
         FROM `classroom_users` 
         LEFT JOIN `classroom` ON `classroom`.`id` = `classroom_users`.`classroom_id`
         LEFT JOIN `prodi` ON `prodi`.`id` = `classroom`.`prodi_id`
-        WHERE `classroom_users`.`classroom_id` = " . $classId;
+        WHERE `classroom_users`.`classroom_id` = '$classId'";
         return $this->db->query($query)->row_array();
     }
 }

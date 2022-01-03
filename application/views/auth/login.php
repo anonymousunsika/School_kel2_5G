@@ -40,7 +40,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="text-center">
+                    <a class="small text-light" href="<?= base_url(); ?>">Kembali ke Beranda</a>
+                </div>
             </div>
 
         </div>

@@ -14,8 +14,8 @@ class Admin_model extends CI_Model
         ON `user`.`id` = `classroom_users`.`user_id`
         LEFT JOIN `classroom`
         ON `classroom_users`.`classroom_id` = `classroom`.`id` WHERE `user`.`role_id` = 2 " . ($contain != null ?
-            "AND (`user`.`name` LIKE " . '%' . $contain . '%' .
-            "OR `user`.`npm` LIKE " . '%' . $contain . '%' . ")" : "") . ")t WHERE rn = 1";
+            "AND (`user`.`name` LIKE '" . '%' . $contain . '%\'' .
+            "OR `user`.`npm` LIKE '" . '%' . $contain . '%' . "')" : "") . ")t WHERE rn = 1";
 
         return $this->db->query($query)->result_array();
     }
@@ -28,7 +28,7 @@ class Admin_model extends CI_Model
         LEFT JOIN `classroom` ON `schedule`.`classroom_id` = `classroom`.`id`
         LEFT JOIN `course` ON `schedule`.`course_id` = `course`.`id`
         LEFT JOIN `prodi` ON `prodi`.`id` = `classroom`.`prodi_id`
-        WHERE `classroom`.`id` = " . $classId . " AND `schedule`.`timeGroup` = " . $timeGroup;
+        WHERE `classroom`.`id` = '$classId' AND `schedule`.`timeGroup` = '$timeGroup'";
 
         return $this->db->query($query)->result_array();
     }
@@ -36,7 +36,7 @@ class Admin_model extends CI_Model
     public function getTimeGroup($classId)
     {
         $query = "SELECT `timeGroup` FROM `schedule` 
-        WHERE `classroom_id` = " . $classId . "
+        WHERE `classroom_id` = '$classId'
         GROUP BY `timeGroup`";
 
         return $this->db->query($query)->result_array();
@@ -53,7 +53,7 @@ class Admin_model extends CI_Model
     {
         $query = "SELECT `classroom`.*, `prodi`.`name` AS prodi
         FROM `classroom` LEFT JOIN `prodi` ON `classroom`.`prodi_id` = `prodi`.`id`
-        " . ($semester != null ? "WHERE `classroom`.`semester` = " . $semester : '');
+        " . ($semester != null ? "WHERE `classroom`.`semester` = '$semester'" : '');
         return $this->db->query($query)->result_array();
     }
 
@@ -63,7 +63,7 @@ class Admin_model extends CI_Model
         FROM `classroom_users` 
         LEFT JOIN `classroom` ON `classroom_users`.`classroom_id` = `classroom`.`id`
         LEFT JOIN `user` ON `classroom_users`.`user_id` = `user`.`id`
-        WHERE `classroom`.`id` = " . $classId;
+        WHERE `classroom`.`id` = '$classId'";
 
         return $this->db->query($query)->result_array();
     }
