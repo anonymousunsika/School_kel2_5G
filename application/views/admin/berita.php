@@ -46,9 +46,9 @@
                         <tr>
                             <th>#</th>
                             <td><?= $i++; ?></td>
-                            <td><?= $news['judul']; ?></td>
+                            <td><?= html_escape($news['judul']); ?></td>
                             <td><?= strlen(html_escape($news['isi'])) > 200 ? substr(html_escape($news['isi']), 0, 200) . '...' : html_escape($news['isi']); ?></td>
-                            <td><?= $news['penulis']; ?></td>
+                            <td><?= html_escape($news['penulis']); ?></td>
                             <td><?= date('d F Y', $news['tanggal']); ?></td>
                             <td>
                                 <a class="btn btn-sm btn-secondary mx-1" href="<?= base_url('/admin/editor?action=2&id=') . $news['id']; ?>">Sunting</a>

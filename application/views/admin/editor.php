@@ -17,12 +17,12 @@
                 <div class="row">
                     <div class="mb-3 form-group col-lg-8">
                         <label for="penulis" class="form-label">Penulis</label>
-                        <input type="text" class="form-control" id="penulis" name="penulis" value="<?php if ($action == 2) echo $berita['penulis'];
+                        <input type="text" class="form-control" id="penulis" name="penulis" value="<?php if ($action == 2) echo html_escape($berita['penulis']);
                                                                                                     else echo $user['name'] ?>">
                     </div>
                     <div class="mb-3 form-group col-lg-8">
                         <label for="judul" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" value="<?php if ($action == 2) echo $berita['judul']; ?>">
+                        <input type="text" class="form-control" id="judul" name="judul" value="<?php if ($action == 2) echo html_escape($berita['judul']); ?>">
                     </div>
                     <div class="mb-3 form-group col-lg-8">
                         <textarea name="content" id="editor">

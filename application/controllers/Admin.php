@@ -529,9 +529,9 @@ class Admin extends CI_Controller
 
                     set_flashdata('message', createSuccessAlert('Data berhasil ditambahkan'));
                 } else if ($action == 2) {
-                    $this->db->set('judul', html_escape($this->input->post('judul', true)));
+                    $this->db->set('judul', $this->input->post('judul'));
                     $this->db->set('isi', $this->input->post('content', true));
-                    $this->db->set('penulis', html_escape($this->input->post('penulis', true)));
+                    $this->db->set('penulis', $this->input->post('penulis'));
                     $this->db->where('id', $this->input->get('id'));
 
                     $this->db->update('berita');
