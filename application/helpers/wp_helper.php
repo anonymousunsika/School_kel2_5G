@@ -61,3 +61,30 @@ function check_open($id)
         return "checked";
     }
 }
+
+function set_flashdata($id, $msg)
+{
+    $ci = get_instance();
+    $ci->session->set_userdata($id, $msg);
+}
+
+function flashdata($id)
+{
+    $ci = get_instance();
+    if ($ci->session->has_userdata($id)) {
+        $msg = $ci->session->userdata($id);
+        $ci->session->unset_userdata($id);
+        return $msg;
+    }
+    return '';
+}
+
+function createDangerAlert($msg)
+{
+    return '<div class="alert alert-danger alert-dismissible fade show" role="alert">' . $msg . '</div>';
+}
+
+function createSuccessAlert($msg)
+{
+    return '<div class="alert alert-success alert-dismissible fade show" role="alert">' . $msg . '</div>';
+}

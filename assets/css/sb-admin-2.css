@@ -10040,6 +10040,15 @@ a:focus {
   justify-content: center;
 }
 
+.icon-circle-big {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .border-left-primary {
   border-left: 0.25rem solid #4e73df !important;
 }

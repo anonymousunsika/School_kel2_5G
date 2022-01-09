@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['sejarah'] = 'home/sejarah';
 $route['sambutan'] = 'home/sambutan';
+$route['berita/(:num)'] = 'home/page/$1';
+$route['berita(:any)?'] = 'home/berita';

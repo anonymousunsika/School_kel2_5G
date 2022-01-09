@@ -19,6 +19,16 @@ class User_model extends CI_Model
         return $this->db->query($query)->row_array();
     }
 
+    public function getUserMenu($role_id)
+    {
+        $queryMenu = "SELECT `user_menu`.`id`, `menu`
+                        FROM `user_menu` JOIN `user_access_menu` 
+                        ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+                        WHERE `user_access_menu`.`role_id` = $role_id
+                        ORDER BY `user_access_menu`.`menu_id` ASC";
+        return $this->db->query($queryMenu)->result_array();
+    }
+
     public function getClassroomUser($userId)
     {
         $query = "SELECT `classroom`.*, `prodi`.`name` AS prodi,

@@ -118,7 +118,7 @@ class Admin extends CI_Controller
         if (is_logged_in() != 0) return;
         if ($this->input->get('id') != null) {
             $id = $this->input->get('id');
-            
+
             $userCheck = $this->db->get_where('user', ['id' => $id, 'role_id' => 2])->row_array();
             if (!$userCheck) {
                 forbidden_page();
@@ -130,8 +130,8 @@ class Admin extends CI_Controller
 
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-            $data['useredit'] = $this->db->query("SELECT * FROM user WHERE id = '".$id."' AND role_id = 2")->row_array();
-            
+            $data['useredit'] = $this->db->query("SELECT * FROM user WHERE id = '" . $id . "' AND role_id = 2")->row_array();
+
             //$data['useredit'] = $this->db->get_where('user', ['id' => $id, 'role_id' => 2])->row_array();
             $data['prodi'] = $this->db->get('prodi')->result_array();
 
@@ -455,6 +455,93 @@ class Admin extends CI_Controller
             $data = $this->adm->getMembers($contain);
 
             print_r(json_encode($data));
+        }
+    }
+
+    public function berita()
+    {
+        if (is_logged_in() != 0) return;
+        $this->load->model('User_model', 'usr');
+
+        $data['title'] = "Berita";
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->usr->getUserMenu($data['user']['role_id']);
+        $data['berita'] = $this->db->get('berita')->result_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/berita', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function editor()
+    {
+        if (is_logged_in() != 0) return;
+        $this->load->model('User_model', 'usr');
+
+        if (is_numeric($this->input->get('action'))) {
+            $action = $this->input->get('action');
+
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['menu'] = $this->usr->getUserMenu($data['user']['role_id']);
+            if ($action == 1) {
+                $data['title'] = "Tambah Berita";
+                $data['action'] = $this->input->get('action');
+            } else if ($action == 2) {
+                $id = $this->input->get('id');
+                $data['title'] = "Edit Berita";
+                if (is_numeric($id)) {
+                    $data['id'] = $id;
+                    $data['berita'] = $this->db->get_where('berita', ['id' => $id])->row_array();
+                } else {
+                    redirect('staff/berita');
+                }
+                $data['action'] = $this->input->get('action');
+            } else if ($action == 3) {
+                $id = $this->input->get('id');
+                if (is_numeric($id)) {
+                    $this->db->delete('berita', ['id' => $id]);
+                    set_flashdata('message', createSuccessAlert('Data berhasil dihapus'));
+                }
+                redirect('admin/berita');
+            }
+
+            $this->form_validation->set_rules('judul', 'Judul', 'required|trim|min_length[3]|max_length[256]');
+            $this->form_validation->set_rules('content', 'Isi', 'required|trim|max_length[20000]');
+            $this->form_validation->set_rules('penulis', 'Penulis', 'required|trim|min_length[3]|max_length[128]');
+
+            if ($this->form_validation->run() == false) {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/sidebar', $data);
+                $this->load->view('templates/topbar', $data);
+                $this->load->view('admin/editor', $data);
+                $this->load->view('templates/footer');
+            } else {
+                if ($action == 1) {
+                    $data_insert = [
+                        'judul' => html_escape($this->input->post('judul', true)),
+                        'isi' => $this->input->post('content', true),
+                        'penulis' => html_escape($this->input->post('penulis', true)),
+                        'tanggal' => time()
+                    ];
+                    $this->db->insert('berita', $data_insert);
+
+                    set_flashdata('message', createSuccessAlert('Data berhasil ditambahkan'));
+                } else if ($action == 2) {
+                    $this->db->set('judul', html_escape($this->input->post('judul', true)));
+                    $this->db->set('isi', $this->input->post('content', true));
+                    $this->db->set('penulis', html_escape($this->input->post('penulis', true)));
+                    $this->db->where('id', $this->input->get('id'));
+
+                    $this->db->update('berita');
+
+                    set_flashdata('message', createSuccessAlert('Data berhasil diedit'));
+                }
+                redirect('admin/berita');
+            }
+        } else {
+            redirect('admin/berita');
         }
     }
 }

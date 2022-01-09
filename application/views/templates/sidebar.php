@@ -2,9 +2,9 @@
        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
            <!-- Sidebar - Brand -->
-           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-               <div class="sidebar-brand-icon rotate-n-15">
-                   <i class="fas fa-code"></i>
+           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">
+               <div class="sidebar-brand-icon">
+                   <img class="icon-circle-big" src="<?= base_url(); ?>/assets/img/unsika.png" alt="Logo">
                </div>
                <div class="sidebar-brand-text mx-3">Unsika</div>
            </a>
