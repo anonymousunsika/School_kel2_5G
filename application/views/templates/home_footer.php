@@ -17,11 +17,9 @@
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4>Link</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Beranda</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Visi & Misi</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Sejarah</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('/'); ?>">Beranda</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('/'); ?>#visimisi">Visi & Misi</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('/'); ?>sejarah">Sejarah</a></li>
                     </ul>
                 </div>
 
