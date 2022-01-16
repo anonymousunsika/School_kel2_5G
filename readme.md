@@ -24,7 +24,7 @@ Website adalah kumpulan halaman web yang dapat diakses publik dan saling terkait
 Website memiliki variasi yang hampir tidak ada habisnya, termasuk situs pendidikan, situs berita, forum, situs media sosial, situs e-commerce, dan sebagainya. Halaman-halaman dalam sebuah website biasanya merupakan campuran teks dan media lainnya. Meskipun demikian, tidak ada aturan yang mengatur bentuk website.
 Website ini hanya dapat dibuka melalui jaringan internet. Itu sebabnya website ini sangat memerlukan keamanan website agar terhindar dari kemungkinan serangan hacker. Kita ketahui bahwa hacker hanya dapat menemukan dan merusak website apabila terkoneksi dengan jaringan internet. Maka dari itu, sebagai pengguna website sebaiknya perlu untuk mengetahui cara-cara untuk menjaga keamanan website agar tehindar dari kerugian yang tidak diinginkan.
 Keamanan website adalah sebuah upaya untuk melindungi dan menjaga website dari serangan virus maupun hacker yang terkoneksi melalui sebuah jaringan. Keamanan website ini tidak hanya terdiri dari satu hal, namun berbagai macam jenis perlindungan dan pencegahan.
-Kami memutuskan untuk menggunakan 000webhost untuk menghosting websitenya, dan github sebagai version controlnya. Link pada website yanh kami buat adalah https://challengework.000webhostapp.com/, sedangkan untuk githubnya adalah https://github.com/anonymousunsika/School_kel2_5G.
+Kami memutuskan untuk menggunakan 000webhost untuk menghosting websitenya, dan github sebagai version controlnya. Link pada website yang kami buat adalah https://challengework.000webhostapp.com/, sedangkan untuk githubnya adalah https://github.com/anonymousunsika/School_kel2_5G.
 
 # Kesimpulan
 
