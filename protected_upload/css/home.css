@@ -1,0 +1,20 @@
+.frame .photo{
+    position: relative;
+    height: 240px;
+    margin: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.frame .title{
+    display: block;
+    width: auto;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+.logo-sq{
+    display: block;
+    height: 250px;
+}
