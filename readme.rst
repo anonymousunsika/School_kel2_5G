@@ -5,7 +5,7 @@ Kelompok 2 Kelas 5G
 *******************
 Anggota
 *******************
-> Riky Priatna Kurniawan 1910631170039
+>> Riky Priatna Kurniawan 1910631170039
 > Muhammad Yusuf rismanda gaja 1910631170109
 > Roland Vincent Sitanggang 1910631170131
 4. Aditya Pramudya 1910631170153
